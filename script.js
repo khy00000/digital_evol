@@ -184,7 +184,7 @@ ScrollTrigger.create({
       }, 500);
     }
     gsap.to(model.rotation, {
-      // y축 한바퀴 회전 후 모델, 스캔컨테이너 점점 사라짐
+      // y축 한바퀴 회전 후 모델, 스캔컨테이너 사라짐
       y: model.rotation.y + Math.PI * 2,
       duration: 1,
       ease: "power2.inOut",
@@ -232,15 +232,15 @@ function animate() {
       model.position.y = floatOffset;
     }
 
-    // 스코롤 진행도(현재 스코롤 위치 기준 최대 1까지 제한하여 스캐너 섹션 진행 계산)
+    // 스코롤 진행도(현재 스코롤 위치 기준 1(100%) 스코롤 진행 계산)
     const scrollProgress = Math.min(currentScroll / scannerPosition, 1);
 
-    // 스코롤 진행도에 따라 0 > 0 , 50% > 180도, 100% > 360도 x축 회전
+    // 스코롤 진행도 100%이하 x축 1바퀴
     if (scrollProgress < 1) {
       model.rotation.x = scrollProgress * Math.PI * 2;
     }
 
-    // 천천히 계속 돌아감 y축 회전
+    // 천천히 둥둥
     if (scrollProgress < 1) {
       model.rotation.y += 0.001 * rotationSpeed;
     }
