@@ -232,7 +232,7 @@ function animate() {
       model.position.y = floatOffset;
     }
 
-    // 스코롤 진행도(현재 스코롤 위치 기준 1(100%) 스코롤 진행 계산)
+    // 스코롤 진행도(현재 스코롤 위치 기준으로 섹션 시작 위치까지 스코롤 진행률 0~1(%) 계산)
     const scrollProgress = Math.min(currentScroll / scannerPosition, 1);
 
     // 스코롤 진행도 100%이하 x축 1바퀴
@@ -240,7 +240,7 @@ function animate() {
       model.rotation.x = scrollProgress * Math.PI * 2;
     }
 
-    // 천천히 둥둥
+    // 스캔 섹션 전까지 오른쪽 방향으로 조금씩 회전
     if (scrollProgress < 1) {
       model.rotation.y += 0.001 * rotationSpeed;
     }
